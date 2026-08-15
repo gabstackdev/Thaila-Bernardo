@@ -1,0 +1,1602 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
+:root {
+  --black: #111010;
+  --black-soft: #1b1818;
+
+  --gold: #c9a45c;
+  --gold-light: #e1c98d;
+  --gold-dark: #9f7c38;
+
+  --cream: #f7f2ec;
+  --beige: #eee5dc;
+
+  --white: #ffffff;
+  --gray: #77706b;
+
+  --serif: "Cormorant Garamond", serif;
+  --sans: "Montserrat", sans-serif;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7%;
+
+  background: rgba(247, 242, 236, 0.94);
+
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--gold-dark);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 38px;
+}
+
+.nav-links a {
+  position: relative;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: var(--black);
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--gold);
+
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   ELEMENTOS GERAIS
+===================================================== */
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  color: var(--gold-dark);
+}
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 220px;
+
+  padding: 16px 28px;
+
+  margin-top: 18px;
+
+  background: var(--black);
+
+  color: var(--white);
+
+  border: 1px solid var(--black);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  transition: 0.35s;
+}
+
+.btn:hover {
+  background: var(--gold);
+
+  border-color: var(--gold);
+
+  color: var(--black);
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 35px rgba(159, 124, 56, 0.25);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+  min-height: calc(100vh - 82px);
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 80px;
+
+  padding: 90px 8%;
+
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(201, 164, 92, 0.16),
+      transparent 35%
+    ),
+    var(--cream);
+}
+
+.hero-text {
+  max-width: 620px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+
+  font-size: clamp(58px, 6vw, 90px);
+
+  line-height: 0.95;
+
+  font-weight: 500;
+
+  letter-spacing: -2px;
+
+  margin-bottom: 30px;
+}
+
+.hero h1 span,
+.statement h2 span,
+.about-text h2 span,
+.course h2 span,
+.results h2 span,
+.students h2 span,
+.testimonials h2 span,
+.final-cta h2 span {
+  color: var(--gold-dark);
+}
+
+.subtitle {
+  max-width: 520px;
+
+  font-size: 15px;
+
+  line-height: 1.9;
+
+  color: var(--gray);
+
+  margin-bottom: 20px;
+}
+
+.hero-img {
+  position: relative;
+
+  max-width: 540px;
+
+  justify-self: end;
+}
+
+.hero-img::before {
+  content: "";
+
+  position: absolute;
+
+  top: -20px;
+  right: -20px;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid var(--gold);
+
+  z-index: 0;
+}
+
+.hero-img img {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.16);
+}
+
+/* =====================================================
+   STATEMENT
+===================================================== */
+
+.statement {
+  position: relative;
+
+  padding: 130px 10%;
+
+  background: var(--black);
+
+  color: var(--white);
+}
+
+.section-number {
+  position: absolute;
+
+  top: 55px;
+  left: 10%;
+
+  color: var(--gold);
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+}
+
+.statement-content {
+  max-width: 850px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.statement h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 78px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 30px;
+}
+
+.statement p {
+  max-width: 650px;
+
+  margin: auto;
+
+  color: #cfc7c1;
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   SOBRE
+===================================================== */
+
+.about {
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: center;
+
+  gap: 100px;
+
+  padding: 130px 10%;
+
+  background: var(--white);
+}
+
+.about-img {
+  position: relative;
+}
+
+.about-img::after {
+  content: "";
+
+  position: absolute;
+
+  left: -20px;
+  bottom: -20px;
+
+  width: 70%;
+  height: 70%;
+
+  background: rgba(201, 164, 92, 0.14);
+
+  z-index: 0;
+}
+
+.about-img img {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(48px, 5vw, 70px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  margin-bottom: 30px;
+}
+
+.about-text ul {
+  list-style: none;
+
+  border-top: 1px solid #ddd;
+}
+
+.about-text li {
+  padding: 17px 0 17px 25px;
+
+  border-bottom: 1px solid #ddd;
+
+  font-size: 13px;
+
+  position: relative;
+}
+
+.about-text li::before {
+  content: "✦";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--gold);
+}
+
+/* =====================================================
+   CURSO
+===================================================== */
+
+.course {
+  padding: 130px 8%;
+
+  background: var(--cream);
+
+  text-align: center;
+}
+
+.course-header {
+  max-width: 700px;
+
+  margin: auto;
+}
+
+.course h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 20px;
+}
+
+.course-header p {
+  color: var(--gray);
+
+  font-size: 14px;
+
+  margin-bottom: 60px;
+}
+
+.techniques-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+
+  max-width: 1100px;
+
+  margin: auto auto 70px;
+}
+
+.card {
+  min-height: 180px;
+
+  padding: 28px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background: var(--white);
+
+  border: 1px solid #e3dbd3;
+
+  position: relative;
+
+  transition: 0.35s;
+}
+
+.card > span {
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold-dark);
+
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-family: var(--serif);
+
+  font-size: 24px;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--gray);
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--gold);
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================
+   CRONOGRAMA
+===================================================== */
+
+.curriculum {
+  max-width: 950px;
+
+  margin: auto;
+
+  padding: 60px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 50px;
+
+  text-align: left;
+
+  background: var(--black);
+
+  color: var(--white);
+
+  border-top: 2px solid var(--gold);
+}
+
+.curriculum .eyebrow {
+  color: var(--gold-light);
+}
+
+.curriculum h3 {
+  font-family: var(--serif);
+
+  font-size: 40px;
+
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.curriculum p {
+  color: #cfc7c1;
+
+  font-size: 13px;
+
+  margin-bottom: 15px;
+}
+
+.curriculum strong {
+  color: var(--gold-light);
+}
+
+/* =====================================================
+   RESULTADOS DAS ALUNAS
+===================================================== */
+
+.results {
+  padding: 130px 8%;
+
+  background: var(--white);
+}
+
+.results-header {
+  max-width: 750px;
+
+  margin: auto auto 60px;
+
+  text-align: center;
+}
+
+.results h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 20px;
+}
+
+.results-header p {
+  color: var(--gray);
+
+  font-size: 14px;
+}
+
+/* GALERIA */
+
+.gallery {
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.gallery-item {
+  background: var(--cream);
+
+  border: 1px solid #e3dbd3;
+
+  overflow: hidden;
+
+  transition: 0.35s;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--gold);
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-img {
+  overflow: hidden;
+}
+
+.gallery-img img {
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-info {
+  padding: 22px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.gallery-info span {
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold-dark);
+}
+
+.gallery-info h3 {
+  font-family: var(--serif);
+
+  font-size: 27px;
+
+  margin: 5px 0;
+}
+
+.gallery-info p {
+  color: var(--gray);
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   ALUNAS FORMADAS
+===================================================== */
+
+.students {
+  padding: 130px 8%;
+
+  background: var(--black);
+
+  color: var(--white);
+}
+
+.students-header {
+  max-width: 750px;
+
+  margin: auto auto 60px;
+
+  text-align: center;
+}
+
+.students-header .eyebrow {
+  color: var(--gold-light);
+}
+
+.students h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 20px;
+}
+
+.students-header p {
+  color: #cfc7c1;
+
+  font-size: 14px;
+}
+
+.students-gallery {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.student-card {
+  background: var(--black-soft);
+
+  border: 1px solid rgba(201, 164, 92, 0.3);
+
+  transition: 0.35s;
+}
+
+.student-card:hover {
+  transform: translateY(-8px);
+
+  border-color: var(--gold);
+}
+
+.student-img {
+  overflow: hidden;
+}
+
+.student-img img {
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  transition: 0.5s;
+}
+
+.student-card:hover img {
+  transform: scale(1.04);
+}
+
+.student-info {
+  padding: 20px;
+
+  text-align: center;
+}
+
+.student-info span {
+  color: var(--gold-light);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+}
+
+.student-info h3 {
+  font-family: var(--serif);
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+  margin-top: 5px;
+}
+
+/* =====================================================
+   DEPOIMENTOS
+===================================================== */
+
+.testimonials {
+  padding: 130px 8%;
+
+  background: var(--cream);
+}
+
+.testimonials-header {
+  max-width: 800px;
+
+  margin: auto auto 60px;
+
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 20px;
+}
+
+.testimonials-header p {
+  color: var(--gray);
+
+  font-size: 14px;
+}
+
+.testimonial-grid {
+  max-width: 1150px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 22px;
+}
+
+.testimonial-card {
+  position: relative;
+
+  padding: 42px;
+
+  background: var(--white);
+
+  border: 1px solid #e2d9d0;
+
+  transition: 0.35s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--gold);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+}
+
+.testimonial-card.featured {
+  background: var(--black);
+
+  color: var(--white);
+
+  border-color: var(--gold-dark);
+}
+
+.testimonial-number {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold-dark);
+}
+
+.testimonial-stars {
+  color: var(--gold);
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 15px;
+}
+
+.quote-mark {
+  font-family: var(--serif);
+
+  font-size: 65px;
+
+  line-height: 0.5;
+
+  color: var(--gold);
+
+  margin-bottom: 25px;
+}
+
+.testimonial-card p {
+  font-family: var(--serif);
+
+  font-size: 20px;
+
+  line-height: 1.5;
+
+  color: #4e4946;
+}
+
+.testimonial-card.featured p {
+  color: #ddd5ce;
+}
+
+.testimonial-author {
+  margin-top: 30px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #ded6ce;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.testimonial-card.featured .testimonial-author {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.testimonial-author span {
+  color: var(--gold-dark);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+}
+
+.testimonial-card.featured .testimonial-author span {
+  color: var(--gold-light);
+}
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.investment {
+  padding: 130px 8%;
+
+  background: var(--white);
+}
+
+.investment-content {
+  max-width: 1150px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.8fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+.investment .text {
+  max-width: 600px;
+}
+
+.investment h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  margin-bottom: 25px;
+}
+
+.investment .text > p {
+  color: var(--gray);
+
+  font-size: 14px;
+
+  margin-bottom: 30px;
+}
+
+.price-box {
+  padding: 30px;
+
+  background: var(--cream);
+
+  border-left: 2px solid var(--gold);
+
+  margin-bottom: 20px;
+}
+
+.price-box > span {
+  color: var(--gold-dark);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  font-weight: 600;
+}
+
+.price-box h3 {
+  font-family: var(--serif);
+
+  font-size: 36px;
+
+  font-weight: 500;
+
+  margin-top: 8px;
+}
+
+.price-box p {
+  color: var(--gray);
+
+  font-size: 13px;
+}
+
+.price-box small {
+  display: block;
+
+  margin-top: 15px;
+
+  color: var(--gray);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+.kit-img {
+  position: relative;
+}
+
+.kit-img img {
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* =====================================================
+   CTA FINAL
+===================================================== */
+
+.final-cta {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 130px 8%;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(196, 158, 91, 0.2),
+      transparent 45%
+    ),
+    #171515;
+
+  color: var(--white);
+}
+
+.final-cta::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -180px;
+
+  width: 650px;
+  height: 300px;
+
+  transform: translateX(-50%);
+
+  background: rgba(196, 158, 91, 0.14);
+
+  filter: blur(90px);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.final-cta::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 180px;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(205, 176, 120, 0.7),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+.final-cta > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+.final-cta .eyebrow {
+  display: block;
+
+  margin-bottom: 20px;
+
+  color: #cdb078;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 4px;
+}
+
+.final-cta h2 {
+  font-family: var(--serif);
+
+  font-size: clamp(55px, 6vw, 80px);
+
+  line-height: 0.95;
+
+  font-weight: 500;
+
+  margin-bottom: 25px;
+}
+
+.final-cta h2 span {
+  color: #cdb078;
+}
+
+.final-cta p {
+  max-width: 500px;
+
+  margin: 0 auto 25px;
+
+  color: #cfc7c3;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.final-cta .btn {
+  margin-top: 20px;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  border: 1px solid transparent;
+
+  transition: 0.35s;
+}
+
+.final-cta .btn:hover {
+  background: transparent;
+
+  color: #cdb078;
+
+  border-color: #cdb078;
+
+  box-shadow: 0 8px 30px rgba(196, 158, 91, 0.12);
+
+  transform: translateY(-3px);
+}
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp-float {
+  position: fixed;
+
+  right: 25px;
+  bottom: 25px;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #25d366;
+
+  border-radius: 50%;
+
+  z-index: 999;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+
+  fill: white;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 40px 20px;
+
+  text-align: center;
+
+  background: #0b0a0a;
+
+  color: #999;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+
+  color: var(--gold);
+
+  font-size: 35px;
+
+  margin-bottom: 8px;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 1000px) {
+  .hero {
+    gap: 40px;
+  }
+
+  .techniques-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about {
+    gap: 50px;
+  }
+
+  .gallery {
+    gap: 18px;
+  }
+}
+
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+
+    padding: 0 6%;
+  }
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+
+    top: 70px;
+    left: 0;
+
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    background: var(--cream);
+
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+
+    border-bottom: 1px solid #e5dbd7;
+  }
+
+  .nav-links a {
+    display: block;
+
+    padding: 18px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* HERO */
+
+  .hero {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    padding: 80px 7%;
+
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .subtitle {
+    margin: auto;
+  }
+
+  .hero-img {
+    justify-self: center;
+
+    width: 90%;
+  }
+
+  /* SOBRE */
+
+  .about {
+    grid-template-columns: 1fr;
+
+    padding: 90px 7%;
+
+    gap: 60px;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text ul {
+    text-align: left;
+  }
+
+  /* STATEMENT */
+
+  .statement {
+    padding: 100px 7%;
+  }
+
+  /* CURSO */
+
+  .course {
+    padding: 90px 7%;
+  }
+
+  .techniques-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .curriculum {
+    grid-template-columns: 1fr;
+
+    padding: 40px 25px;
+  }
+
+  /* RESULTADOS */
+
+  .results {
+    padding: 90px 7%;
+  }
+
+  .results-header {
+    margin-bottom: 45px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+
+    max-width: 520px;
+
+    gap: 25px;
+  }
+
+  .gallery-info {
+    padding: 18px;
+  }
+
+  .gallery-info h3 {
+    font-size: 25px;
+  }
+
+  /* ALUNAS */
+
+  .students {
+    padding: 90px 7%;
+  }
+
+  .students-gallery {
+    grid-template-columns: 1fr;
+
+    max-width: 520px;
+  }
+
+  /* DEPOIMENTOS */
+
+  .testimonials {
+    padding: 90px 7%;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    padding: 30px;
+  }
+
+  /* INFORMAÇÕES */
+
+  .investment {
+    padding: 90px 7%;
+  }
+
+  .investment-content {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .investment .text {
+    text-align: center;
+
+    margin: auto;
+  }
+
+  .price-box {
+    text-align: left;
+  }
+
+  .kit-img {
+    max-width: 520px;
+
+    margin: auto;
+  }
+
+  /* CTA */
+
+  .final-cta {
+    padding: 100px 7%;
+  }
+}
+
+/* =====================================================
+   MOBILE PEQUENO
+===================================================== */
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .course h2,
+  .results h2,
+  .students h2,
+  .testimonials h2 {
+    font-size: 48px;
+  }
+
+  .techniques-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 150px;
+  }
+
+  .testimonial-card p {
+    font-size: 18px;
+  }
+
+  .gallery-info h3 {
+    font-size: 23px;
+  }
+
+  .whatsapp-float {
+    width: 54px;
+
+    height: 54px;
+
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .final-cta {
+    padding: 90px 6%;
+  }
+
+  .final-cta h2 {
+    font-size: 48px;
+  }
+
+  .final-cta p {
+    font-size: 13px;
+  }
+
+  .final-cta .btn {
+    width: 100%;
+
+    max-width: 280px;
+  }
+}
